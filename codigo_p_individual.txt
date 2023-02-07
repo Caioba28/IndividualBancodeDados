@@ -1,0 +1,217 @@
+
+Setting environment for using XAMPP for Windows.
+programadores.carioc@NBAC839Z00 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.4.27-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aula3              |
+| consultorio        |
+| information_schema |
+| lojainfo           |
+| mydb               |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| sakila             |
+| sistema_resilia    |
+| sistema_resiliadb  |
+| test               |
++--------------------+
+12 rows in set (0.001 sec)
+
+MariaDB [(none)]> create database proj_idividual;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aula3              |
+| consultorio        |
+| information_schema |
+| lojainfo           |
+| mydb               |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| proj_idividual     |
+| sakila             |
+| sistema_resilia    |
+| sistema_resiliadb  |
+| test               |
++--------------------+
+13 rows in set (0.001 sec)
+
+MariaDB [(none)]> use proj_individual;
+ERROR 1049 (42000): Unknown database 'proj_individual'
+MariaDB [(none)]> create proj_individual;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'proj_individual' at line 1
+MariaDB [(none)]> create database proj_individual;
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [(none)]> use proj_individual;
+Database changed
+MariaDB [proj_individual]> create table cursos(
+    -> id int,
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 3
+MariaDB [proj_individual]> create table cursos(
+    -> id int primary key;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 2
+MariaDB [proj_individual]> create table cursos(
+    -> id int primary key,
+    -> descricao varchar(50),
+    -> materias varchar(99),
+    -> tempo int);
+Query OK, 0 rows affected (0.015 sec)
+
+MariaDB [proj_individual]> create table turma(
+    -> id int primary key,
+    -> sala int,
+    -> horario int,
+    -> andar int),
+    -> qtd_alunos int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '
+qtd_alunos int)' at line 5
+MariaDB [proj_individual]> create table turma(
+    -> id int primary key,
+    ->     -> sala int,
+    ->     -> horario int,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-> sala int,
+    -> horario int,' at line 3
+MariaDB [proj_individual]> create table turma9
+    -> id int primary key,
+    -> sala int,
+    -> horario int,
+    -> andar,
+    -> qtd_alunos);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'id int primary key,
+sala int,
+horario int,
+andar,
+qtd_alunos)' at line 2
+MariaDB [proj_individual]> create table turma(
+    -> id varchar(12) primary key,
+    -> sala int,
+    -> horario int,
+    -> andar int,
+    -> qtd_alunos int);
+Query OK, 0 rows affected (0.026 sec)
+
+MariaDB [proj_individual]> create table alunos(
+    -> cpf varchar(15) primary key,
+    -> email varchar(20),
+    -> nome varchar(50),
+    -> idade int);
+Query OK, 0 rows affected (0.025 sec)
+
+MariaDB [proj_individual]> show tables;
++---------------------------+
+| Tables_in_proj_individual |
++---------------------------+
+| alunos                    |
+| cursos                    |
+| turma                     |
++---------------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [proj_individual]> describe alunos;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cpf   | varchar(15) | NO   | PRI | NULL    |       |
+| email | varchar(20) | YES  |     | NULL    |       |
+| nome  | varchar(50) | YES  |     | NULL    |       |
+| idade | int(11)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.006 sec)
+
+MariaDB [proj_individual]> describe cursos;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(11)     | NO   | PRI | NULL    |       |
+| descricao | varchar(50) | YES  |     | NULL    |       |
+| materias  | varchar(99) | YES  |     | NULL    |       |
+| tempo     | int(11)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.007 sec)
+
+MariaDB [proj_individual]> describe turma;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| id         | varchar(12) | NO   | PRI | NULL    |       |
+| sala       | int(11)     | YES  |     | NULL    |       |
+| horario    | int(11)     | YES  |     | NULL    |       |
+| andar      | int(11)     | YES  |     | NULL    |       |
+| qtd_alunos | int(11)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.006 sec)
+
+MariaDB [proj_individual]> show tables;
++---------------------------+
+| Tables_in_proj_individual |
++---------------------------+
+| alunos                    |
+| cursos                    |
+| turma                     |
++---------------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [proj_individual]>
+
+_________________________________________________________________________
+
+De acordo com o brModelo:
+
+curso(
+
+-> id varchar(12) primary key,
+-> descricao varchar(50),
+-> materiais varchar(50),
+-> tempo int);
+
+turma(
+
+-> id varchar(12) primary key,
+-> sala int,
+-> horario int,
+andar int);
+
+aluno(
+
+-> cpf varchar(15) primary key,
+-> email varchar(30),
+-> nome varchar(50),
+-> idade int);
+
+
+__________________________
+
+tables
+__________________________
+
+curso
+
+__________________________
+
+turma
+
+__________________________
+
+aluno
+
+__________________________
